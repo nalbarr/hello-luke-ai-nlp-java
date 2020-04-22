@@ -5,6 +5,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+import opennlp.tools.tokenize.SimpleTokenizer;
+import opennlp.tools.tokenize.TokenizerME;
+import opennlp.tools.tokenize.TokenizerModel;
+import java.io.InputStream;
+import java.io.FileInputStream;
 
 public class App {
 
@@ -19,31 +24,52 @@ public class App {
     }
 
     public void simpleStanfordNLP() {
-         // creates a StanfordCoreNLP object, with POS tagging, lemmatization,
+        // creates a StanfordCoreNLP object, with POS tagging, lemmatization,
         // NER, parsing, and coreference resolution
+        // read some text in the text variable
+        // create an empty Annotation just with the given text
+        // run all Annotators on this text
         Properties props = new Properties();
 
         props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
 
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 
-        // read some text in the text variable
         String text = "She went to America last week.";
 
-        // create an empty Annotation just with the given text
         Annotation document = new Annotation(text);
 
-        // run all Annotators on this text
         pipeline.annotate(document);
 
-        //System.out.println( "End of Processing" );
         logger.info("End of Processing");
     }
+
+    public void simpleOpenNLP() {
+        SimpleTokenizer tokenizer = SimpleTokenizer.INSTANCE;
+        String sentence = "Donald Trump is president.";
+        String tokens[] = tokenizer.tokenize(sentence);
+        for (int i=0; i < tokens.length; i++) {
+            logger.info(String.format("%d: %s", i, tokens[i]));
+        }
+    }
+
+    public void mediumOpenNLP() {
+        try {
+            InputStream inputStream = new FileInputStream("./langdetect-183.bin"); 
+            TokenizerModel model = new TokenizerModel(inputStream);
+            TokenizerME tokenizer = new TokenizerME(model);
+            String tokens[] = tokenizer.tokenize("Barack Obama was president.");
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }    
 
     public static void main(String[] args) {
         logger.info("*** main() enter.");
         App app = new App();
         app.logFoo();
-        app.simpleStanfordNLP();
+        //app.simpleStanfordNLP();
+        app.simpleOpenNLP();
+        app.mediumOpenNLP();
     }
 }

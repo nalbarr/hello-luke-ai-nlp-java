@@ -1,6 +1,12 @@
 PROG=hello.luke.ai.nlp.java.App
 CLASSPATH="build/classes/java/main:resources/main/*:build/lib/*"
 
+dependencies:
+	gradle dependencies
+
+open-nlp:
+	cp ./langdetect-183.bin ./build/classes
+
 build:
 	gradle build
 	gradle copyDeps

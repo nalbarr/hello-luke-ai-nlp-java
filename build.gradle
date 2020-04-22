@@ -33,10 +33,15 @@ dependencies {
     // NAA. Below is incompatible with Gradle 7?
     compile group: 'edu.stanford.nlp', name: 'stanford-corenlp', version: '3.9.2'
     compile group: 'edu.stanford.nlp', name: 'stanford-corenlp', version: '3.9.2', classifier: 'models'        
-    // NAA. Middig SL4J?
+    // NAA. Stanford NLP has ties to SL4J logger?
     // - https://stackoverflow.com/questions/7421612/slf4j-failed-to-load-class-org-slf4j-impl-staticloggerbinder
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.5'
+    // NAA. Add Apache OpenNLP.
+    // - https://opennlp.apache.org/docs/
+    // - https://www.tutorialspoint.com/opennlp
+    compile group: 'org.apache.opennlp', name: 'opennlp-tools', version: '1.9.2'
+    compile group: 'org.apache.opennlp', name: 'opennlp-uima', version: '1.9.2'
 }
 
 application {
@@ -44,6 +49,8 @@ application {
     mainClassName = 'hello.luke.ai.nlp.java.App'
 }
 
+// NAA.
+// - This will copy dependencies to local directory for easier run and debugging
 task copyDeps(type: Copy) {
   from configurations.runtime
   into 'build/lib'
