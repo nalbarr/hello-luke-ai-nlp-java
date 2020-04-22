@@ -55,7 +55,7 @@ public class App {
 
     public void mediumOpenNLP() {
         try {
-            InputStream inputStream = new FileInputStream("/Users/nalbarr/hello-luke-ai-nlp-java/en-token.bin"); 
+            InputStream inputStream = new FileInputStream("en-token.bin"); 
             TokenizerModel model = new TokenizerModel(inputStream);
             TokenizerME tokenizer = new TokenizerME(model);
             String tokens[] = tokenizer.tokenize("Mr. Barack Obama was president.");

@@ -1,21 +1,26 @@
+OPENNLP_MODEL_FILE=en-token.bin
 PROG=hello.luke.ai.nlp.java.App
+CLASSPATH_ROOT=build/classes/java/main
 CLASSPATH="build/classes/java/main:resources/main/*:build/lib/*"
-
-dependencies:
-	gradle dependencies
-
-open-nlp:
-	cp ./langdetect-183.bin ./build/classes/java/main
-
-build:
-	gradle build
-	gradle copyDeps
 
 clean:
 	gradle clean
 
-# https://stanfordnlp.github.io/CoreNLP/memory-time.html
-run:
+dependencies:
+	gradle dependencies
+
+build:
+	gradle build
+
+copy_files:
+	gradle copyDeps
+	cp ${OPENNLP_MODEL_FILE} ${CLASSPATH_ROOT}
+
+# NAA.  Alternative to gradle run to debug dependencies.
+# - https://stanfordnlp.github.io/CoreNLP/memory-time.html
+run: copy_files
+	# gradle run
+
 	#CMD="java -cp ${CLASSPATH} ${PROG}"
 	#@echo ${CMD}
 	#${CMD}
