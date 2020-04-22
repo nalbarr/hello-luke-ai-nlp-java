@@ -55,10 +55,13 @@ public class App {
 
     public void mediumOpenNLP() {
         try {
-            InputStream inputStream = new FileInputStream("./langdetect-183.bin"); 
+            InputStream inputStream = new FileInputStream("/Users/nalbarr/hello-luke-ai-nlp-java/en-token.bin"); 
             TokenizerModel model = new TokenizerModel(inputStream);
             TokenizerME tokenizer = new TokenizerME(model);
-            String tokens[] = tokenizer.tokenize("Barack Obama was president.");
+            String tokens[] = tokenizer.tokenize("Mr. Barack Obama was president.");
+            for (int i=0; i < tokens.length; i++) {
+                logger.info(String.format("%d: %s", i, tokens[i]));
+            }
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }

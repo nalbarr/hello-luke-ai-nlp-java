@@ -5,7 +5,7 @@ dependencies:
 	gradle dependencies
 
 open-nlp:
-	cp ./langdetect-183.bin ./build/classes
+	cp ./langdetect-183.bin ./build/classes/java/main
 
 build:
 	gradle build
