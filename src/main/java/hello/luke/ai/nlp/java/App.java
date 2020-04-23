@@ -3,8 +3,8 @@ package hello.luke.ai.nlp.java;
 import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import edu.stanford.nlp.pipeline.Annotation;
-import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+//import edu.stanford.nlp.pipeline.Annotation;
+//import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import opennlp.tools.tokenize.SimpleTokenizer;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
@@ -23,6 +23,7 @@ public class App {
         logger.info(foo());
     }
 
+    /*
     public void simpleStanfordNLP() {
         // creates a StanfordCoreNLP object, with POS tagging, lemmatization,
         // NER, parsing, and coreference resolution
@@ -43,6 +44,7 @@ public class App {
 
         logger.info("End of Processing");
     }
+    */
 
     public void simpleOpenNLP() {
         SimpleTokenizer tokenizer = SimpleTokenizer.INSTANCE;

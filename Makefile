@@ -18,10 +18,11 @@ copy_files:
 
 # NAA.  Alternative to gradle run to debug dependencies.
 # - https://stanfordnlp.github.io/CoreNLP/memory-time.html
-run: copy_files
-	# gradle run
+#run: copy_files
+run:
+	gradle run
 
 	#CMD="java -cp ${CLASSPATH} ${PROG}"
 	#@echo ${CMD}
 	#${CMD}
-	java -cp ${CLASSPATH} ${PROG}
+	#java -cp ${CLASSPATH} ${PROG}

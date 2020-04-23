@@ -31,8 +31,8 @@ dependencies {
     // NAA. Add Stanford NLP.
     // - https://mvnrepository.com/artifact/edu.stanford.nlp/stanford-corenlp/3.9.2
     // NAA. Below is incompatible with Gradle 7?
-    compile group: 'edu.stanford.nlp', name: 'stanford-corenlp', version: '3.9.2'
-    compile group: 'edu.stanford.nlp', name: 'stanford-corenlp', version: '3.9.2', classifier: 'models'        
+    //compile group: 'edu.stanford.nlp', name: 'stanford-corenlp', version: '3.9.2'
+    //compile group: 'edu.stanford.nlp', name: 'stanford-corenlp', version: '3.9.2', classifier: 'models'        
     // NAA. Stanford NLP has ties to SL4J logger?
     // - https://stackoverflow.com/questions/7421612/slf4j-failed-to-load-class-org-slf4j-impl-staticloggerbinder
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'
